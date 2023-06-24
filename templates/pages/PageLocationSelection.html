@@ -4,14 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/static/output.css" />
-	<title>Server Error</title>
+	<title>Select a Location</title>
 </head>
 <body>
 
-	{{template "NavGuestClosed.html" .}}
-	
-    <p>{{ .ErrServer }}</p>
-
+	{{ template "NavUserClosed.html" . }}
 
 	<script src="https://unpkg.com/htmx.org@1.9.2"></script>
 	<script src="https://kit.fontawesome.com/ef0709a418.js" crossorigin="anonymous"></script>

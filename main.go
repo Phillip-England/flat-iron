@@ -2,8 +2,7 @@ package main
 
 import (
 	"context"
-	"htmx-scorecard/src/components"
-	"htmx-scorecard/src/pages"
+	"htmx-scorecard/src/routes"
 	"htmx-scorecard/src/types"
 	"log"
 
@@ -36,15 +35,24 @@ func main() {
 	// PAGES
 	//-----------------------------
 
-	pages.PageLogin(r, mongoStore)
-	pages.PageSignup(r, mongoStore)
+	routes.PageLogin(r, mongoStore)
+	routes.PageSignup(r, mongoStore)
+	routes.PageLocationSelection(r, mongoStore)
 
 	//-----------------------------
 	// COMPONENTS
 	//-----------------------------
+	
+	routes.NavGuestOpened(r)
+	routes.NavGuestClosed(r)
+	routes.NavUserOpened(r)
+	routes.NavUserClosed(r)
 
-	components.NavGuestOpened(r)
-	components.NavGuestClosed(r)
+	//-----------------------------
+	// SERVER ACTIONS
+	//-----------------------------
+
+	routes.ActionLoginUser(r, mongoStore)
 
 	//-----------------------------
 	// SERVING
