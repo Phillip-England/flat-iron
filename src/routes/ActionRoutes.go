@@ -12,3 +12,9 @@ func ActionLoginUser(r *gin.Engine, mongoStore *types.MongoStore) {
 		actions.LoginUser(c, mongoStore)
 	})
 }
+
+func ActionCreateLocation(r *gin.Engine, mongoStore *types.MongoStore) {
+	r.POST("/actions/CreateLocation", func(c *gin.Context) {
+		actions.CreateLocation(c, mongoStore)
+	})
+}

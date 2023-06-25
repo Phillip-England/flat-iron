@@ -1,0 +1,13 @@
+<form class="p-4 flex flex-col border" hx-boost="true" method="POST" action="/actions/CreateLocation">
+	<h2 class="mb-2 font-serif">Create Locations</h2>
+
+    {{ if .ErrCreateLocationForm }}
+        <p class="text-xs mb-2 text-red-500" >{{ .ErrCreateLocationForm }}</p>
+    {{ end }}
+
+	<label class="text-xs">Name</label>
+	<input type="text" name="name" class="border mb-2 p-1 text-xs" value="Chick-fil-A Southroads" />
+	<label class="text-xs">Number</label>
+	<input type="text" name="number" class="border mb-6 p-1 text-xs" value="03253" />
+	<input type="submit" class="border text-sm bg-red-500 p-2 rounded-lg text-white" />
+</form>

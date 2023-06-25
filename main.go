@@ -38,6 +38,7 @@ func main() {
 	routes.PageLogin(r, mongoStore)
 	routes.PageSignup(r, mongoStore)
 	routes.PageLocationSelection(r, mongoStore)
+	routes.PageServerError(r)
 
 	//-----------------------------
 	// COMPONENTS
@@ -53,6 +54,7 @@ func main() {
 	//-----------------------------
 
 	routes.ActionLoginUser(r, mongoStore)
+	routes.ActionCreateLocation(r, mongoStore)
 
 	//-----------------------------
 	// SERVING
