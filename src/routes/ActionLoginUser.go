@@ -12,7 +12,7 @@ import (
 func ActionLoginUser(r *gin.Engine, mongoStore *types.MongoStore) {
 	r.POST("/actions/LoginUser", func(c *gin.Context) {
 		user := types.NewUser(c.PostForm("email"), c.PostForm("password"))
-		httpErr := user.Find(mongoStore.UserCollection)
+		httpErr := user.Exists(mongoStore.UserCollection)
 		if httpErr != nil {
 			if httpErr.Code == 500 {
 				c.Redirect(303, fmt.Sprintf("/500?ErrServer=%s", httpErr.Message))

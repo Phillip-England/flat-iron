@@ -2,6 +2,7 @@ package types
 
 import (
 	"context"
+	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -22,6 +23,40 @@ func NewUser(email string, password string) (*User) {
 		Password: string(hashedPassword),
 	}
 }
+
+func FindUserBySession(token string, mongoStore *MongoStore) (*User, *HttpErr) {
+	var session Session
+	objectId, err := primitive.ObjectIDFromHex(token)
+	if err != nil {
+		return nil, NewHttpErr(0, 401, "unauthorized")
+	}
+	err = mongoStore.SessionCollection.FindOne(context.Background(), bson.D{{
+		Key: "_id", Value: objectId,
+	}}).Decode(&session)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			return nil, NewHttpErr(1, 401, "unauthorized")
+		}
+		return nil, NewHttpErr(2, 500, "internal server error")
+	}
+	expiration := session.Expiration
+	currentTime := time.Now().UTC()
+	if expiration.Before(currentTime) {
+		return nil, NewHttpErr(3, 401, "unauthorized")
+	}
+	var user User
+	err = mongoStore.UserCollection.FindOne(context.Background(), bson.D{
+		{Key: "_id", Value: session.User},
+	}).Decode(&user)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			return nil, NewHttpErr(4, 401, "unauthorized")
+		}
+		return nil, NewHttpErr(5, 500, "internal server error")
+	}
+	return &user, nil
+} 
+
 
 func (m *User) Insert(userCollection *mongo.Collection) (*HttpErr) {
 	var userExists User
@@ -47,7 +82,7 @@ func (m *User) Insert(userCollection *mongo.Collection) (*HttpErr) {
 	return nil
 }
 
-func (m *User) Find(userCollection *mongo.Collection) (*HttpErr) {
+func (m *User) Exists(userCollection *mongo.Collection) (*HttpErr) {
 	err := userCollection.FindOne(context.Background(), bson.D{{
 		Key: "email", Value: m.Email,
 	}}).Decode(m)
@@ -59,3 +94,5 @@ func (m *User) Find(userCollection *mongo.Collection) (*HttpErr) {
 	}
 	return nil
 }
+
+

@@ -623,6 +623,10 @@ video {
   height: 100vh;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .w-3\/5 {
   width: 60%;
 }
@@ -637,6 +641,10 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-4 {
+  width: 1rem;
 }
 
 .max-w-sm {
@@ -900,6 +908,10 @@ video {
   font-weight: 600;
 }
 
+.font-bold {
+  font-weight: 700;
+}
+
 .italic {
   font-style: italic;
 }
@@ -935,6 +947,11 @@ video {
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.text-red-200 {
+  --tw-text-opacity: 1;
+  color: rgb(254 202 202 / var(--tw-text-opacity));
 }
 
 .opacity-50 {

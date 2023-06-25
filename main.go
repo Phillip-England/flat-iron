@@ -39,6 +39,7 @@ func main() {
 	routes.PageSignup(r, mongoStore)
 	routes.PageLocationSelection(r, mongoStore)
 	routes.PageServerError(r)
+	routes.PageUnauthorized(r)
 
 	//-----------------------------
 	// COMPONENTS
