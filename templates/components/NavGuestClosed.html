@@ -1,18 +1,16 @@
 <div id="nav-container">
-
-    <!-- navbar -->
-    <div id="nav-guest" class="bg-white fixed h-16 w-screen top-0 left-0 border-b flex flex-row z-20 justify-between">
-      <h1 class="text-xl font-serif self-center p-4">{{ .Banner }}</h1>
+  <!-- navbar -->
+  <div id="nav-guest" class="bg-red-500 fixed h-16 w-screen top-0 left-0 border-b flex flex-row z-20 justify-between">
+      <h1 class="text-xl font-serif self-center p-4 text-white">{{ .Banner }}</h1>
       <div class="flex p-4 items-center">
-        <div class="w-6 h-6 text-black cursor-pointer bg-transparent" hx-post="/components/NavGuestOpened?Banner={{ .Banner }}" hx-trigger="click" hx-target="#nav-container" hx-swap="outerHTML">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-full h-full">
-              <path fill-rule="evenodd" d="M3 5A1 1 0 0 1 4 4h12a1 1 0 0 1 0 2H4a1 1 0 0 1-1-1zM3 10A1 1 0 0 1 4 9h12a1 1 0 0 1 0 2H4a1 1 0 0 1-1-1zM3 15a1 1 0 0 1 1-1h12a1 1 0 0 1 0 2H4a1 1 0 0 1-1-1z"/>
-            </svg>
+          <div class="w-6 h-6 text-white cursor-pointer bg-transparent" hx-post="/components/NavGuestOpened?Banner={{ .Banner }}" hx-trigger="click" hx-target="#nav-container" hx-swap="outerHTML">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-full h-full">
+                  <path fill-rule="evenodd" d="M3 5A1 1 0 0 1 4 4h12a1 1 0 0 1 0 2H4a1 1 0 0 1-1-1zM3 10A1 1 0 0 1 4 9h12a1 1 0 0 1 0 2H4a1 1 0 0 1-1-1zM3 15a1 1 0 0 1 1-1h12a1 1 0 0 1 0 2H4a1 1 0 0 1-1-1z"/>
+              </svg>
           </div>
       </div>
-    </div>
-    
-    <!-- spacer -->
-    <div class="h-16"></div>
-  
   </div>
+
+  <!-- spacer -->
+  <div class="h-16"></div>
+</div>
