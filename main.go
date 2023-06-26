@@ -37,11 +37,11 @@ func main() {
 	// PAGES
 	//-----------------------------
 
-	pageRoutes.PageLogin(r, mongoStore)
-	pageRoutes.PageSignup(r, mongoStore)
-	pageRoutes.PageLocationSelection(r, mongoStore)
-	pageRoutes.PageServerError(r)
-	pageRoutes.PageUnauthorized(r)
+	pageRoutes.Login(r, mongoStore)
+	pageRoutes.Signup(r, mongoStore)
+	pageRoutes.LocationSelection(r, mongoStore)
+	pageRoutes.ServerError(r)
+	pageRoutes.Unauthorized(r)
 
 	//-----------------------------
 	// COMPONENTS
