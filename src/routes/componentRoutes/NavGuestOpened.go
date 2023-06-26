@@ -1,4 +1,4 @@
-package routes
+package componentRoutes
 
 import "github.com/gin-gonic/gin"
 

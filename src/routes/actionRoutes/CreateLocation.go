@@ -1,4 +1,4 @@
-package routes
+package actionRoutes
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func ActionCreateLocation(r *gin.Engine, mongoStore *types.MongoStore) {
+func CreateLocation(r *gin.Engine, mongoStore *types.MongoStore) {
 	r.POST("/actions/CreateLocation", func(c *gin.Context) {
 		location := types.NewLocation(c.PostForm("name"), c.PostForm("number"))
 		fmt.Println(location)

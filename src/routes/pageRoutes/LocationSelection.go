@@ -1,4 +1,4 @@
-package routes
+package pageRoutes
 
 import (
 	"htmx-scorecard/src/lib"
@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func PageLocationSelection(r *gin.Engine, mongoStore *types.MongoStore) {
+func LocationSelection(r *gin.Engine, mongoStore *types.MongoStore) {
 	r.GET("/locations", func(c *gin.Context) {
 		user, httpErr := lib.Auth(c, mongoStore)
 		if httpErr != nil {

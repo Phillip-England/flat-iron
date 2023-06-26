@@ -1,4 +1,4 @@
-package routes
+package pageRoutes
 
 import (
 	"htmx-scorecard/src/types"
@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func PageSignup(r *gin.Engine, mongoStore *types.MongoStore) {
+func Signup(r *gin.Engine, mongoStore *types.MongoStore) {
 	r.GET("/signup", func(c *gin.Context) {
 		c.HTML(200, "PageSignup.html", gin.H{
 			"ErrSignupForm": "",

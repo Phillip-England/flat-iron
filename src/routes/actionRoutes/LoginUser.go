@@ -1,4 +1,4 @@
-package routes
+package actionRoutes
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-func ActionLoginUser(r *gin.Engine, mongoStore *types.MongoStore) {
+func LoginUser(r *gin.Engine, mongoStore *types.MongoStore) {
 	r.POST("/actions/LoginUser", func(c *gin.Context) {
 		user := types.NewUser(c.PostForm("email"), c.PostForm("password"))
 		httpErr := user.Exists(mongoStore.UserCollection)

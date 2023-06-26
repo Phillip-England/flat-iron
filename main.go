@@ -2,7 +2,9 @@ package main
 
 import (
 	"context"
-	"htmx-scorecard/src/routes"
+	"htmx-scorecard/src/routes/actionRoutes"
+	"htmx-scorecard/src/routes/componentRoutes"
+	"htmx-scorecard/src/routes/pageRoutes"
 	"htmx-scorecard/src/types"
 	"log"
 
@@ -35,27 +37,28 @@ func main() {
 	// PAGES
 	//-----------------------------
 
-	routes.PageLogin(r, mongoStore)
-	routes.PageSignup(r, mongoStore)
-	routes.PageLocationSelection(r, mongoStore)
-	routes.PageServerError(r)
-	routes.PageUnauthorized(r)
+	pageRoutes.PageLogin(r, mongoStore)
+	pageRoutes.PageSignup(r, mongoStore)
+	pageRoutes.PageLocationSelection(r, mongoStore)
+	pageRoutes.PageServerError(r)
+	pageRoutes.PageUnauthorized(r)
 
 	//-----------------------------
 	// COMPONENTS
 	//-----------------------------
 	
-	routes.NavGuestOpened(r)
-	routes.NavGuestClosed(r)
-	routes.NavUserOpened(r)
-	routes.NavUserClosed(r)
+	componentRoutes.NavGuestOpened(r)
+	componentRoutes.NavGuestClosed(r)
+	componentRoutes.NavUserOpened(r)
+	componentRoutes.NavUserClosed(r)
 
 	//-----------------------------
 	// SERVER ACTIONS
 	//-----------------------------
 
-	routes.ActionLoginUser(r, mongoStore)
-	routes.ActionCreateLocation(r, mongoStore)
+	actionRoutes.LoginUser(r, mongoStore)
+	actionRoutes.CreateLocation(r, mongoStore)
+	actionRoutes.Logout(r)
 
 	//-----------------------------
 	// SERVING
