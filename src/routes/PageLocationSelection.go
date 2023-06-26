@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"fmt"
 	"htmx-scorecard/src/lib"
 	"htmx-scorecard/src/types"
 
@@ -21,9 +20,9 @@ func PageLocationSelection(r *gin.Engine, mongoStore *types.MongoStore) {
 				return
 			}
 		}
-		fmt.Println(user)
 		c.HTML(200, "PageLocationSelection.html", gin.H{
 			"Banner": "Locations",
+			"User": user,
 		})
 	})
 }
