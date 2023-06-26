@@ -1,6 +1,7 @@
 package lib
 
 import (
+	"htmx-scorecard/src/database/userdb"
 	"htmx-scorecard/src/types"
 
 	"github.com/gin-gonic/gin"
@@ -11,7 +12,7 @@ func Auth(c *gin.Context, mongoStore *types.MongoStore) (*types.User, *types.Htt
 	if err != nil {
 		return nil, types.NewHttpErr(0, 401, "unauthorized")
 	}
-	user, httpErr := types.FindUserBySession(cookie, mongoStore)
+	user, httpErr := userdb.FindUserBySession(cookie, mongoStore)
 	if httpErr != nil {
 		return nil, httpErr
 	}

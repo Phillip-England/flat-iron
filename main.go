@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
-	"htmx-scorecard/src/routes/actionRoutes"
-	"htmx-scorecard/src/routes/componentRoutes"
-	"htmx-scorecard/src/routes/pageRoutes"
+	actionroutes "htmx-scorecard/src/routes/actionRoutes"
+	componentroutes "htmx-scorecard/src/routes/componentRoutes"
+	pageroutes "htmx-scorecard/src/routes/pageRoutes"
 	"htmx-scorecard/src/types"
 	"log"
 
@@ -37,29 +37,30 @@ func main() {
 	// PAGES
 	//-----------------------------
 
-	pageRoutes.Login(r, mongoStore)
-	pageRoutes.Signup(r, mongoStore)
-	pageRoutes.LocationSelection(r, mongoStore)
-	pageRoutes.ServerError(r)
-	pageRoutes.Unauthorized(r)
+	pageroutes.Login(r, mongoStore)
+	pageroutes.Signup(r, mongoStore)
+	pageroutes.LocationSelection(r, mongoStore)
+	pageroutes.ServerError(r)
+	pageroutes.Unauthorized(r)
+	pageroutes.Test(r, mongoStore)
 
 	//-----------------------------
 	// COMPONENTS
 	//-----------------------------
 	
-	componentRoutes.NavGuestOpened(r)
-	componentRoutes.NavGuestClosed(r)
-	componentRoutes.NavUserOpened(r)
-	componentRoutes.NavUserClosed(r)
+	componentroutes.NavGuestOpened(r)
+	componentroutes.NavGuestClosed(r)
+	componentroutes.NavUserOpened(r)
+	componentroutes.NavUserClosed(r)
 
 	//-----------------------------
 	// SERVER ACTIONS
 	//-----------------------------
 
-	actionRoutes.LoginUser(r, mongoStore)
-	actionRoutes.CreateLocation(r, mongoStore)
-	actionRoutes.Logout(r)
-
+	actionroutes.LoginUser(r, mongoStore)
+	actionroutes.CreateLocation(r, mongoStore)
+	actionroutes.Logout(r)
+	
 	//-----------------------------
 	// SERVING
 	//-----------------------------

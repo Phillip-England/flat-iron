@@ -1,4 +1,4 @@
-package actionRoutes
+package actionroutes
 
 import (
 	"fmt"

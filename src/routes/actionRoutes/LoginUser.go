@@ -1,7 +1,9 @@
-package actionRoutes
+package actionroutes
 
 import (
 	"fmt"
+	"htmx-scorecard/src/database/sessiondb"
+	"htmx-scorecard/src/database/userdb"
 	"htmx-scorecard/src/types"
 	"os"
 
@@ -12,7 +14,7 @@ import (
 func LoginUser(r *gin.Engine, mongoStore *types.MongoStore) {
 	r.POST("/actions/LoginUser", func(c *gin.Context) {
 		user := types.NewUser(c.PostForm("email"), c.PostForm("password"))
-		httpErr := user.Exists(mongoStore.UserCollection)
+		httpErr := userdb.Exists(user, mongoStore.UserCollection)
 		if httpErr != nil {
 			if httpErr.Code == 500 {
 				c.Redirect(303, fmt.Sprintf("/500?ErrServer=%s", httpErr.Message))
@@ -28,22 +30,22 @@ func LoginUser(r *gin.Engine, mongoStore *types.MongoStore) {
 			c.Redirect(303, fmt.Sprintf("/?ErrLoginForm=%s", "invalid credentials"))
 			return
 		}
-			sessionModel := types.NewSession(user.Id)
-			httpErr = sessionModel.ClearUserSessions(mongoStore.SessionCollection)
+			session := types.NewSession(user.Id)
+			httpErr = sessiondb.ClearUserSessions(session, mongoStore.SessionCollection)
 			if httpErr != nil {
 				if httpErr.Code == 500 {
 					c.Redirect(303, fmt.Sprintf("/500?ErrServer=%s", httpErr.Message))
 					return
 				}
 			}
-			httpErr = sessionModel.Insert(mongoStore.SessionCollection)
+			httpErr = sessiondb.Insert(session, mongoStore.SessionCollection)
 			if httpErr != nil {
 				if httpErr.Code == 500 {
 					c.Redirect(303, fmt.Sprintf("/500?ErrServer=%s", httpErr.Message))
 					return
 				}
 			}
-			sessionToken := sessionModel.Id.Hex()
+			sessionToken := session.Id.Hex()
 			c.SetCookie("session-token", sessionToken, 86400, "/", os.Getenv("DOMAIN"), true, true)
 			c.Redirect(303, "/locations")
 	})

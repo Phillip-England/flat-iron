@@ -1,4 +1,4 @@
-package pageRoutes
+package pageroutes
 
 import "github.com/gin-gonic/gin"
 

@@ -1,4 +1,4 @@
-package pageRoutes
+package pageroutes
 
 import (
 	"htmx-scorecard/src/types"

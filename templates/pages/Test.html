@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Log In</title>
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+	<div id="nav-container" class="bg-red-500 fixed h-16 w-screen top-0 left-0 border-b flex flex-row z-20 justify-between">
+		<h1 class="text-xl font-serif self-center p-4 text-white">Chick-fil-A Tools</h1>
+		<div class="flex p-4 items-center">
+			<div class="w-6 h-6 text-white cursor-pointer bg-transparent" hx-post="/components/NavGuestOpened?Banner=Chick-fil-A Tools" hx-trigger="click" hx-target="#nav-container" hx-swap="outerHTML">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-full h-full">
+					<path fill-rule="evenodd" d="M3 5A1 1 0 0 1 4 4h12a1 1 0 0 1 0 2H4a1 1 0 0 1-1-1zM3 10A1 1 0 0 1 4 9h12a1 1 0 0 1 0 2H4a1 1 0 0 1-1-1zM3 15a1 1 0 0 1 1-1h12a1 1 0 0 1 0 2H4a1 1 0 0 1-1-1z"/>
+				</svg>
+			</div>
+		</div>
+	</div>
+
+	<div class="h-16"></div>
+
+	<form class="p-4 bg-white max-w-sm mx-auto mt-8 rounded-lg shadow-md">
+		<h2 class="mb-4 font-serif text-red-500 text-2xl">Log In</h2>
+
+		<label class="text-sm text-red-500">Email</label>
+		<input type="text" name="email" class="border border-red-500 mb-2 p-2 text-sm bg-white text-red-500" value="phillip@gmail.com" />
+
+		<label class="text-sm text-red-500">Password</label>
+		<input type="password" name="password" class="border border-red-500 mb-6 p-2 text-sm bg-white text-red-500" value="password" />
+
+		<button type="submit" class="block w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-300 ease-in-out bg-red-500 border border-red-500 rounded-md shadow-md hover:bg-red-600 hover:border-red-600 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-700 active:border-red-700">
+			Submit
+		</button>
+	</form>
+
+	<footer class="bg-red-500 text-white py-4 fixed bottom-0 left-0 w-full">
+		<p class="text-xs pl-4 pr-4 italic">"To have a positive influence, you have to have a servant's heart." - Truett Cathy</p>
+	</footer>
+
+	<script src="https://unpkg.com/htmx.org@1.9.2"></script>
+	<script src="https://kit.fontawesome.com/ef0709a418.js" crossorigin="anonymous"></script>
+</body>
+</html>
