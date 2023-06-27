@@ -43,6 +43,7 @@ func main() {
 	pageroutes.ServerError(r)
 	pageroutes.Unauthorized(r)
 	pageroutes.Test(r, mongoStore)
+	pageroutes.Loading(r, mongoStore)
 
 	//-----------------------------
 	// COMPONENTS
@@ -58,6 +59,7 @@ func main() {
 	//-----------------------------
 
 	actionroutes.LoginUser(r, mongoStore)
+	actionroutes.SignupUser(r, mongoStore)
 	actionroutes.CreateLocation(r, mongoStore)
 	actionroutes.Logout(r)
 	

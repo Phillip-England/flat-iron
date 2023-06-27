@@ -1,16 +1,69 @@
-<form class="p-4 flex flex-col bg-white text-white" hx-boost="true" method="POST" action="/actions/SignupUser">
-	<h2 class="mb-4 font-serif text-red-500 text-2xl">Sign Up</h2>
+<div class="flex content-center items-center">
+	<form class="p-4 w-full flex flex-col bg-white text-white htmx-indicator" hx-boost="true" method="POST" action="/actions/SignupUser">
+		<h2 class="mb-4 font-serif text-red-500 text-2xl">Sign Up</h2>
+	
+			{{ if .ErrSignupForm }}
+					<p class="text-sm mb-4 text-red-500">{{ .ErrSignupForm }}</p>
+			{{ end }}
+	
+		<label class="text-sm text-red-500">Email</label>
+		<input type="text" name="email" class="border border-red-500 mb-2 p-2 text-sm bg-white text-red-500" value="paul" />
+		<label class="text-sm text-red-500">Password</label>
+		<input type="password" name="password" class="border border-red-500 mb-6 p-2 text-sm bg-white text-red-500" value="ppqqwwee" />
 
-    {{ if .ErrSignupForm }}
-        <p class="text-sm mb-2 text-red-500">{{ .ErrSignupForm }}</p>
-    {{ end }}
+		<button id="#button-login" type="submit" class="inline-block px-4 py-2 text-sm font-medium leading-5 text-white transition duration-300 ease-in-out bg-red-500 border border-red-500 rounded-md shadow-md hover:bg-red-600 hover:border-red-600 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-700 active:border-red-700">
+			Submit
+		</button>	
+	
+	</form>
+</div>
 
-	<label class="text-sm text-red-500">Email</label>
-	<input type="text" name="email" class="border border-red-500 mb-2 p-2 text-sm bg-white text-red-500" value="phillip@gmail.com" />
-	<label class="text-sm text-red-500">Password</label>
-	<input type="password" name="password" class="border border-red-500 mb-6 p-2 text-sm bg-white text-red-500" value="password" />
 
-	<button type="submit" class="inline-block px-4 py-2 text-sm font-medium leading-5 text-white transition duration-300 ease-in-out bg-red-500 border border-red-500 rounded-md shadow-md hover:bg-red-600 hover:border-red-600 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-700 active:border-red-700">
-		Submit
-	</button>
-</form>
+<style>
+
+.htmx-indicator{
+    opacity: 100%;
+}
+
+.htmx-request.htmx-indicator {
+	opacity: 50%;
+	animation: shake 0.8s infinite;  animation: smooth-shake 0.5s infinite cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes smooth-shake {
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(-2px);
+  }
+  20% {
+    transform: translateX(2px);
+  }
+  30% {
+    transform: translateX(-1px);
+  }
+  40% {
+    transform: translateX(1px);
+  }
+  50% {
+    transform: translateX(-1px);
+  }
+  60% {
+    transform: translateX(1px);
+  }
+  70% {
+    transform: translateX(-1px);
+  }
+  80% {
+    transform: translateX(1px);
+  }
+  90% {
+    transform: translateX(-1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+</style>

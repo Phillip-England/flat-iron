@@ -9,7 +9,7 @@ import (
 func Signup(r *gin.Engine, mongoStore *types.MongoStore) {
 	r.GET("/signup", func(c *gin.Context) {
 		c.HTML(200, "PageSignup.html", gin.H{
-			"ErrSignupForm": "",
+			"ErrSignupForm": c.Query("ErrSignupForm"),
 			"Banner": "Chick-fil-A Tools",
 		})
 	})
