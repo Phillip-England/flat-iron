@@ -15,12 +15,12 @@ func Insert(session *types.Session, sessionCollection *mongo.Collection) (*types
 		{Key: "expiration", Value: session.Expiration},
 	})
 	if err != nil {
-		return types.NewHttpErr(0, 500, "internal server error")
+		return types.NewHttpErr(500, "internal server error")
 	}
 	stringId := result.InsertedID
 	objectId, ok := stringId.(primitive.ObjectID)
 	if !ok {
-		return types.NewHttpErr(1, 500, "internal server error")
+		return types.NewHttpErr(500, "internal server error")
 	}
 	session.Id = objectId
 	return nil

@@ -13,7 +13,7 @@ func ClearUserSessions(session *types.Session, sessionCollection *mongo.Collecti
 		{Key: "user", Value: session.User},
 	})
 	if err != nil {
-		return types.NewHttpErr(0, 500, "internal server error")
+		return types.NewHttpErr(500, "internal server error")
 	}
 	return nil
 }

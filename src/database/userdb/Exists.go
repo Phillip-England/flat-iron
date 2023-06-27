@@ -14,9 +14,9 @@ func Exists(user *types.User, userCollection *mongo.Collection) (*types.HttpErr)
 	}}).Decode(user)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
-			return types.NewHttpErr(0, 400, "invalid credentials")
+			return types.NewHttpErr(400, "invalid credentials")
 		}
-		return types.NewHttpErr(1, 500, "internal server error")
+		return types.NewHttpErr(500, "internal server error")
 	}
 	return nil
 }

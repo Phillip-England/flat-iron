@@ -1,21 +1,28 @@
 package types
 
-import "fmt"
+import (
+	"fmt"
+	"path/filepath"
+	"runtime"
+)
 
 type HttpErr struct {
-	Code int
+	Code    int
 	Message string
-	Trace int
+	File    string // File where the error occurred
+	Line    int    // Line number where the error occurred
 }
 
-func NewHttpErr(trace int, code int, message string) (*HttpErr) {
+func NewHttpErr(code int, message string) *HttpErr {
+	_, file, line, _ := runtime.Caller(1)
 	return &HttpErr{
-		Code: code,
+		Code:    code,
 		Message: message,
-		Trace: trace,
+		File:    filepath.Base(file),
+		Line:    line,
 	}
 }
 
 func (httpErr *HttpErr) Error() string {
-	return fmt.Sprintf("Trace: %d, Code: %d, Message: %s", httpErr.Trace, httpErr.Code, httpErr.Message)
+	return fmt.Sprintf("Code: %d, Message: %s\nFile: %s, Line: %d", httpErr.Code, httpErr.Message, httpErr.File, httpErr.Line)
 }
