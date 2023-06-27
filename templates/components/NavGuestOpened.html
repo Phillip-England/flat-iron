@@ -1,7 +1,7 @@
-<div id="nav-container">
+<div id="nav-container" hx-boost="true">
   <!-- navbar -->
   <div id="nav-guest" class="bg-red-500 fixed h-16 w-screen top-0 left-0 border-b flex flex-row z-20 justify-between">
-      <h1 class="text-xl font-serif self-center p-4 text-white">{{ .Banner }}</h1>
+      <a class="text-xl font-serif self-center p-4 text-white" href="/">{{ .Banner }}</a>
       <div class="flex p-4 items-center" hx-post="/components/NavGuestClosed?Banner={{ .Banner }}" hx-trigger="click" hx-target="#nav-container" hx-swap="outerHTML">
           <div class="w-6 h-6 text-white cursor-pointer bg-transparent">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-full h-full">

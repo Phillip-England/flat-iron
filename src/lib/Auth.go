@@ -8,11 +8,11 @@ import (
 )
 
 func Auth(c *gin.Context, mongoStore *types.MongoStore) (*types.User, *types.HttpErr) {
-	cookie, err := c.Cookie("session-token")
+	sessionToken, err := c.Cookie("session-token")
 	if err != nil {
 		return nil, types.NewHttpErr(401, "unauthorized")
 	}
-	user, httpErr := userdb.FindUserBySession(cookie, mongoStore)
+	user, httpErr := userdb.FindUserBySession(sessionToken, mongoStore)
 	if httpErr != nil {
 		return nil, httpErr
 	}

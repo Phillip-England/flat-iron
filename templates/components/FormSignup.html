@@ -1,9 +1,9 @@
 <div class="flex content-center items-center">
 	<form class="p-4 w-full flex flex-col bg-white text-white htmx-indicator" hx-boost="true" method="POST" action="/actions/SignupUser">
-		<h2 class="mb-4 font-serif text-red-500 text-2xl">Sign Up</h2>
+		<a class="mb-4 font-serif text-red-500 text-2xl">Sign Up</a>
 	
 			{{ if .ErrSignupForm }}
-					<p class="text-sm mb-4 text-red-500">{{ .ErrSignupForm }}</p>
+					<p class="text-xs mb-4 text-red-500">{{ .ErrSignupForm }}</p>
 			{{ end }}
 	
 		<label class="text-sm text-red-500">Email</label>
