@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
-	actionroutes "htmx-scorecard/src/routes/actionRoutes"
-	componentroutes "htmx-scorecard/src/routes/componentRoutes"
-	pageroutes "htmx-scorecard/src/routes/pageRoutes"
+	"htmx-scorecard/src/routes/actionroutes"
+	"htmx-scorecard/src/routes/componentroutes"
+	"htmx-scorecard/src/routes/pageroutes"
 	"htmx-scorecard/src/types"
 	"log"
 
