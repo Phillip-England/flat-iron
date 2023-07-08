@@ -1,20 +1,19 @@
 <div class="flex content-center items-center">
-	<form class="pl-4 pr-4 pt-4 w-full flex flex-col bg-white text-white" hx-boost="true" method="POST" action="/actions/LoginUser">
-		<h2 class="mb-4 font-serif text-red-500 text-2xl">Create Locatons</h2>
+	<form _="on submit toggle .hidden on #create-location-submit-text then toggle .hidden on #create-location-submit-spinner" class="pl-4 relative pr-4 pt-4 w-full flex flex-col bg-white text-white" hx-boost="true" method="POST" action="/actions/CreateLocation">
+		<h2 class="mb-4 font-serif text-red-500 text-2xl">Create Locations</h2>
 	
 			{{ if .ErrCreateLocationForm }}
 					<p class="text-xs mb-4 text-red-500">{{ .ErrCreateLocationForm }}</p>
 			{{ end }}
 	
 		<label class="text-sm text-red-500">Name</label>
-		<input type="text" name="email" class="border border-red-500 mb-2 p-2 text-sm bg-white text-red-500" value="paul" />
+		<input type="text" name="name" class="border border-red-500 mb-2 p-2 text-sm bg-white text-red-500" value="paul" />
 		<label class="text-sm text-red-500">Number</label>
-		<input type="password" name="password" class="border border-red-500 mb-6 p-2 text-sm bg-white text-red-500" value="ppqqwwee" />
+		<input type="password" name="number" class="border border-red-500 mb-6 p-2 text-sm bg-white text-red-500" value="ppqqwwee" />
 
-		<button id="#button-login" type="submit" class="inline-block px-4 py-2 text-sm font-medium leading-5 text-white transition duration-300 ease-in-out bg-red-500 border border-red-500 rounded-md shadow-md hover:bg-red-600 hover:border-red-600 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-700 active:border-red-700">
-			Submit
-		</button>	
-	
+			<button type="submit" class="w-full flex justify-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-300 ease-in-out bg-red-500 border border-red-500 rounded-md shadow-md hover:bg-red-600 hover:border-red-600 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-700 active:border-red-700">
+				<p id="create-location-submit-text">Submit</p>
+				<div id="create-location-submit-spinner" class="h-6 w-6 hidden animate-spin rounded-full border bg-red-500 border-4 border-red-500 border-t-white"></div>
+			</button>	
 	</form>
 </div>
-
